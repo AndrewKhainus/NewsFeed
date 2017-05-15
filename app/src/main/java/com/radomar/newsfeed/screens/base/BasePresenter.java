@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 
 public interface BasePresenter<V> {
 
-    void onViewCreated(@Nullable Bundle savedInstanceState);
+    void onViewCreated();
     void onDestroyView();
     void bindView(V view);
 }

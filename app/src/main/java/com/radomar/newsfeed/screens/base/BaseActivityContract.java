@@ -47,7 +47,7 @@ public interface BaseActivityContract {
         }
 
         @Override
-        public void onViewCreated(@Nullable Bundle savedInstanceState) {
+        public void onViewCreated() {
 
         }
 

@@ -1,8 +1,50 @@
 package com.radomar.newsfeed.screens.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.v7.app.AppCompatActivity;
+
+import com.radomar.newsfeed.App;
+
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+
 /**
  * Created by Andrew on 15.05.2017.
  */
 
-public class BaseActivity<P extends > {
+public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
+                                extends AppCompatActivity
+                                implements BaseActivityContract.View<P> {
+
+    @Inject
+    protected P presenter;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setupComponent(((App) getApplication()).getAppComponent());
+
+        if (getLayoutRes() != 0) {
+            setContentView(getLayoutRes());
+        }
+
+        ButterKnife.bind(this);
+        presenter.onViewCreated();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public String getStringValue(@StringRes int id) {
+        return getString(id);
+    }
+
+
 }
