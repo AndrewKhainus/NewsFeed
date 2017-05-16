@@ -121,6 +121,6 @@ public class RNewsModel extends RealmObject {
 
     public NewsModel getNewsModel() {
 
-        return new NewsModel(getSource(), getAuthor(), getDescription(), getPublishedAt(), getTitle(), getLinkUrl(), getImageUrl());
+        return new NewsModel(getId(), getSource(), getAuthor(), getDescription(), getPublishedAt(), getTitle(), getLinkUrl(), getImageUrl());
     }
 }

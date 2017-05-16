@@ -72,7 +72,6 @@ public class RealmDataProvider implements DataProvider {
             rows.deleteAllFromRealm();
 
             for (int i = 0; i < news.size(); i++) {
-                mInstance.insertOrUpdate(news.get(i));
 
                 Number currentIdNum = realm.where(RNewsModel.class).max(FIELD_ID);
                 int nextId;
@@ -109,12 +108,43 @@ public class RealmDataProvider implements DataProvider {
 
 
     @Override
-    public void saveToFavorite(NewsModel newsModel) {
+    public void saveToFavorites(int newsId) {
+        RNewsModel newsModel = mInstance
+                .where(RNewsModel.class)
+                .equalTo(FIELD_ID, newsId)
+                .findFirst();
 
+        mInstance.beginTransaction();
+        newsModel.setFavorite(true);
+        mInstance.commitTransaction();
+    }
+
+    @Override
+    public void deleteFromFavorites(int newsId) {
+        RNewsModel newsModel = mInstance
+                .where(RNewsModel.class)
+                .equalTo(FIELD_ID, newsId)
+                .findFirst();
+
+        mInstance.beginTransaction();
+        newsModel.setFavorite(false);
+        mInstance.commitTransaction();
     }
 
     @Override
     public List<NewsModel> getFavorites() {
-        return null;
+        RealmResults<RNewsModel> realmResults = mInstance
+                .where(RNewsModel.class)
+                .equalTo(RNewsModel.FIELD_IS_FAVORITE, true)
+                .findAll();
+
+        List<NewsModel> result = new ArrayList<>();
+        Iterator<RNewsModel> iterator = realmResults.iterator();
+        while (iterator.hasNext()) {
+            RNewsModel item = iterator.next();
+            result.add(item.getNewsModel());
+        }
+
+        return result;
     }
 }

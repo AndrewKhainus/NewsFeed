@@ -6,6 +6,8 @@ package com.radomar.newsfeed.data.model;
 
 public class NewsModel {
 
+    private int id;
+
     private String source;
 
     private String author;
@@ -20,7 +22,8 @@ public class NewsModel {
 
     private String urlToImage;
 
-    public NewsModel(String source, String author, String description, String publishedAt, String title, String linkUrl, String urlToImage) {
+    public NewsModel(int id, String source, String author, String description, String publishedAt, String title, String linkUrl, String urlToImage) {
+        this.id = id;
         this.source = source;
         this.author = author;
         this.description = description;
@@ -76,5 +79,13 @@ public class NewsModel {
 
     public void setLinkUrl(String linkUrl) {
         this.linkUrl = linkUrl;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

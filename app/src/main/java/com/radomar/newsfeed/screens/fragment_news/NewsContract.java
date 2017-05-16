@@ -18,9 +18,15 @@ public interface NewsContract {
         void showProgress();
 
         void hideProgress();
+
+        String getSource();
+
+        void showEmptyList();
     }
 
     abstract class Presenter<V extends View> extends BaseContract.Presenter<V> {
+        abstract void onItemLiked(int newsId);
 
+        abstract void onItemDelete(int newsId);
     }
 }

@@ -1,9 +1,5 @@
 package com.radomar.newsfeed.screens.fragment_news;
 
-import android.content.Intent;
-import android.net.Uri;
-
-import com.radomar.newsfeed.adapters.NewsAdapter;
 import com.radomar.newsfeed.data.database.DataProvider;
 import com.radomar.newsfeed.data.database.RealmDataProvider;
 import com.radomar.newsfeed.data.model.NewsModel;
@@ -16,7 +12,6 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -28,6 +23,7 @@ public class NewsPresenter extends NewsContract.Presenter<NewsContract.View> {
 
     private RestApiClient restApiClient;
     private DataProvider mProvider;
+    private List<NewsModel> data;
 
     @Inject
     public NewsPresenter(RestApiClient restApiClient) {
@@ -38,37 +34,69 @@ public class NewsPresenter extends NewsContract.Presenter<NewsContract.View> {
     @Override
     public void onViewCreated() {
         super.onViewCreated();
-
         initDataStorage();
+        String source = view.getSource();
 
+        if (source != null) {
+            switch (source) {
+                case "favorite":
+                    downloadFavoriteNews();
+                    break;
+                default:
+                    downloadNewsFromNetwork(source);
+            }
+        }
+    }
+
+    private void downloadNewsFromNetwork(String source) {
         view.showProgress();
         addSubscription(restApiClient.newsRestService()
-                .getLatestNews("ars-technica")
+                .getLatestNews(source)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<NewsResponse>() {
-                    @Override
-                    public void accept(@NonNull NewsResponse newsResponse) throws Exception {
-                        view.hideProgress();
-                        //save to DB
-                        mProvider.saveNews(newsResponse.getRModels(), "ars-technica");
+                .subscribe(newsResponse -> {
+                    view.hideProgress();
+                    //save to DB
+                    mProvider.saveNews(newsResponse.getRModels(), source);
 
-                        //read from DB
-                        List<NewsModel> newsModels =  mProvider.getNews(newsResponse.getSource());
+                    //read from DB
+                    data = mProvider.getNews(source);
 
-                        //show items
-                        view.showNews(newsModels);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@NonNull Throwable throwable) throws Exception {
+                    //show items
+                    showData();
+                }, throwable -> {
 //                        TODO create normal ErrorHandler
-                        view.hideProgress();
-                        view.showError();
-                        List<NewsModel> news = mProvider.getNews("ars-technica");
-                        view.showNews(news);
-                    }
+                    view.hideProgress();
+                    view.showError();
+                    data = mProvider.getNews(source);
+                    showData();
                 }));
+    }
+
+    private void downloadFavoriteNews() {
+        data = mProvider.getFavorites();
+        showData();
+    }
+
+    private void showData() {
+        if (data.size() > 0) {
+            view.showNews(data);
+        } else {
+            view.showEmptyList();
+        }
+    }
+
+    @Override
+    void onItemLiked(int newsId) {
+        mProvider.saveToFavorites(newsId);
+    }
+
+    @Override
+    void onItemDelete(int newsId) {
+        mProvider.deleteFromFavorites(newsId);
+        if (data.size() == 1) {
+            view.showEmptyList();
+        }
     }
 
     private void initDataStorage() {

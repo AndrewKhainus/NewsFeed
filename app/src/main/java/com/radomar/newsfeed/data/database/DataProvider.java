@@ -21,7 +21,9 @@ public interface DataProvider {
 
     List<NewsModel> getNews(String newsName);
 
-    void saveToFavorite(NewsModel newsModel);
+    void saveToFavorites(int newsId);
+
+    void deleteFromFavorites(int newsId);
 
     List<NewsModel> getFavorites();
 }

@@ -3,6 +3,7 @@ package com.radomar.newsfeed.screens.activity_main;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -99,21 +100,45 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
 
     @Override
     public void showBbcNews() {
-        pushFragment(R.id.content_main,new NewsFragment());
+        toolbar.setTitle(R.string.title_bbc_news);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "bbc-news");
+        Fragment fragment = new NewsFragment();
+        fragment.setArguments(bundle);
+        pushFragment(R.id.content_main, fragment);
     }
 
     @Override
     public void showBbsSport() {
-        pushFragment(R.id.content_main,new NewsFragment());
+        toolbar.setTitle(R.string.title_bbc_sport);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "bbc-sport");
+        Fragment fragment = new NewsFragment();
+        fragment.setArguments(bundle);
+        pushFragment(R.id.content_main, fragment);
     }
 
     @Override
     public void showArcTechnica() {
-        pushFragment(R.id.content_main,new NewsFragment());
+        toolbar.setTitle(R.string.title_ars_technika);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "ars-technica");
+        Fragment fragment = new NewsFragment();
+        fragment.setArguments(bundle);
+        pushFragment(R.id.content_main, fragment);
     }
 
     @Override
     public void showFavorite() {
-        pushFragment(R.id.content_main,new NewsFragment());
+        toolbar.setTitle(R.string.title_favorite);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("key", "favorite");
+        Fragment fragment = new NewsFragment();
+        fragment.setArguments(bundle);
+        pushFragment(R.id.content_main, fragment);
     }
 }
