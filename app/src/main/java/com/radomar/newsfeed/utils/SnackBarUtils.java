@@ -10,17 +10,17 @@ import android.view.View;
  */
 
 public class SnackBarUtils {
-    public void showError(@NonNull View view, @NonNull CharSequence text) {
+    public static void showError(@NonNull View view, @NonNull CharSequence text) {
         Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
-    public void showError(@NonNull View view, @StringRes int textResId) {
+    public static void showError(@NonNull View view, @StringRes int textResId) {
         Snackbar snackbar = Snackbar.make(view, textResId, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
-    public void showError(@NonNull View view, @StringRes int textResId, Snackbar.Callback callback) {
+    public static void showError(@NonNull View view, @StringRes int textResId, Snackbar.Callback callback) {
         Snackbar snackbar = Snackbar.make(view, textResId, Snackbar.LENGTH_LONG);
         snackbar.addCallback(callback);
 

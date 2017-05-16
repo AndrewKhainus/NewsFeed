@@ -1,8 +1,8 @@
-package com.radomar.newsfeed.screens.splash.di;
+package com.radomar.newsfeed.screens.activity_splash.di;
 
 import com.radomar.newsfeed.di.ActivityScope;
 import com.radomar.newsfeed.di.AppComponent;
-import com.radomar.newsfeed.screens.splash.SplashActivity;
+import com.radomar.newsfeed.screens.activity_splash.SplashActivity;
 
 import dagger.Component;
 

@@ -1,8 +1,5 @@
 package com.radomar.newsfeed.screens.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-
 import com.radomar.newsfeed.di.AppComponent;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -12,13 +9,10 @@ import io.reactivex.disposables.Disposable;
  * Created by Andrew on 15.05.2017.
  */
 
-public interface BaseActivityContract {
+public interface BaseContract {
 
     interface View<P extends Presenter> extends BaseView<P> {
         void setupComponent(AppComponent appComponent);
-//        void showErrorMessage(String message);
-//        <T extends BaseActivity> void startActivity(Class<T> tClass, @Nullable Bundle bundle);
-//        void readBundle(Bundle bundle);
     }
 
     abstract class Presenter<V extends View> implements BasePresenter<V> {
@@ -49,15 +43,9 @@ public interface BaseActivityContract {
 
         }
 
-        public void addSubscription(Disposable disposable) {
+        protected void addSubscription(Disposable disposable) {
             compositeDisposable.add(disposable);
         }
 
-//        public <T> Observable<T> execute(Observable<T> observable) {
-//            return observable
-//                    .timeout(Constants.Api.TIMEOUT, TimeUnit.SECONDS)
-//                    .subscribeOn(Schedulers.computation())
-//                    .observeOn(AndroidSchedulers.mainThread());
-//        }
     }
 }

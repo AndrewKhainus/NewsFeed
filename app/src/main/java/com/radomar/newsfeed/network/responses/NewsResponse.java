@@ -1,7 +1,10 @@
 package com.radomar.newsfeed.network.responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.radomar.newsfeed.data.database.model.RNewsModel;
+import com.radomar.newsfeed.data.model.NewsModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -104,5 +107,23 @@ public class NewsResponse {
         public void setPublishedAt(String publishedAt) {
             this.publishedAt = publishedAt;
         }
+    }
+
+
+    public List<RNewsModel> getRModels() {
+
+        List<RNewsModel> databaseModels = new ArrayList<>();
+
+        for (int i = 0; i < news.size(); i++) {
+            Article article = news.get(i);
+
+            RNewsModel databaseModel = new RNewsModel(source, article.getAuthor(),
+                                                      article.getDescription(), article.getPublishedAt(),
+                                                      article.getTitle(), article.getUrl(), article.getUrlToImage());
+
+            databaseModels.add(databaseModel);
+        }
+
+        return databaseModels;
     }
 }

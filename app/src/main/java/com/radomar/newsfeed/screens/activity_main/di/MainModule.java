@@ -1,9 +1,9 @@
-package com.radomar.newsfeed.screens.main.di;
+package com.radomar.newsfeed.screens.activity_main.di;
 
 import com.radomar.newsfeed.di.ActivityScope;
 import com.radomar.newsfeed.network.RestApiClient;
-import com.radomar.newsfeed.screens.main.MainContract;
-import com.radomar.newsfeed.screens.main.MainPresenter;
+import com.radomar.newsfeed.screens.activity_main.MainContract;
+import com.radomar.newsfeed.screens.activity_main.MainPresenter;
 
 import dagger.Module;
 import dagger.Provides;

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvAuthor_IN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            tools:text="author"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ivLike_IN"
+            android:layout_toLeftOf="@+id/ivLike_IN" />
+
+        <TextView
+            android:id="@+id/tvTitle_IN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAuthor_IN"
+            tools:text="title"/>
+
+        <ImageView
+            android:id="@+id/ivImage_IN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle_IN"/>
+
+        <TextView
+            android:id="@+id/tvDescription_IN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivImage_IN"/>
+
+        <TextView
+            android:id="@+id/tvLink_IN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescription_IN"/>
+
+        <ImageView
+            android:id="@+id/ivLike_IN"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_like"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

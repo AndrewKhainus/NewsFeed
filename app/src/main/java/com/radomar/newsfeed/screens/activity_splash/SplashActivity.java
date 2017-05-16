@@ -1,14 +1,14 @@
-package com.radomar.newsfeed.screens.splash;
+package com.radomar.newsfeed.screens.activity_splash;
 
 
 import android.content.Intent;
 import android.os.Handler;
 
 import com.radomar.newsfeed.R;
-import com.radomar.newsfeed.screens.main.MainActivity;
+import com.radomar.newsfeed.screens.activity_main.MainActivity;
 import com.radomar.newsfeed.di.AppComponent;
 import com.radomar.newsfeed.screens.base.BaseActivity;
-import com.radomar.newsfeed.screens.splash.di.DaggerSplashComponent;
+import com.radomar.newsfeed.screens.activity_splash.di.DaggerSplashComponent;
 
 /**
  * Created by Andrew on 15.05.2017.
@@ -35,8 +35,11 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter>
     @Override
     public void startActivityWithDelay(long delay) {
         handler = new Handler();
-        handler.postDelayed(() -> startActivity(new Intent(SplashActivity.this, MainActivity.class)), delay);
-        finish();
+
+        handler.postDelayed(() -> {
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        }, delay);
     }
 
 }

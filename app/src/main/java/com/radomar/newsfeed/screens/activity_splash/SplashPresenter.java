@@ -1,4 +1,4 @@
-package com.radomar.newsfeed.screens.splash;
+package com.radomar.newsfeed.screens.activity_splash;
 
 /**
  * Created by Andrew on 15.05.2017.

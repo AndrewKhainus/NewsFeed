@@ -1,9 +1,8 @@
-package com.radomar.newsfeed.screens.main.di;
+package com.radomar.newsfeed.screens.activity_main.di;
 
 import com.radomar.newsfeed.di.ActivityScope;
 import com.radomar.newsfeed.di.AppComponent;
-import com.radomar.newsfeed.screens.main.MainActivity;
-import com.radomar.newsfeed.screens.main.MainPresenter;
+import com.radomar.newsfeed.screens.activity_main.MainActivity;
 
 import dagger.Component;
 

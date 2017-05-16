@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.main.MainActivity">
+    tools:context=".screens.activity_main.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,17 +20,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/content_main"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvNews"
+    <RelativeLayout
+        android:id="@+id/content_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
