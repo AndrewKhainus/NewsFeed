@@ -32,6 +32,7 @@ public abstract class BaseActivity<P extends BaseActivityContract.Presenter>
             setContentView(getLayoutRes());
         }
 
+        presenter.bindView(this);
         ButterKnife.bind(this);
         presenter.onViewCreated();
     }

@@ -9,10 +9,10 @@ import com.radomar.newsfeed.screens.base.BaseActivityContract;
 public interface SplashContract {
 
     interface View<P extends Presenter> extends BaseActivityContract.View<P> {
-
+        void startActivityWithDelay(long delay);
     }
 
     abstract class Presenter<V extends View> extends BaseActivityContract.Presenter<V> {
-        protected abstract void startWithPostDelayed();
+
     }
 }

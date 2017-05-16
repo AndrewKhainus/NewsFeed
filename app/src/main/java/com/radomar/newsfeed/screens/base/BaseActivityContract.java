@@ -15,12 +15,10 @@ import io.reactivex.disposables.Disposable;
 public interface BaseActivityContract {
 
     interface View<P extends Presenter> extends BaseView<P> {
-        void findUI();
-        void setupUI();
         void setupComponent(AppComponent appComponent);
-        void showErrorMessage(String message);
-        <T extends BaseActivity> void startActivity(Class<T> tClass, @Nullable Bundle bundle);
-        void readBundle(Bundle bundle);
+//        void showErrorMessage(String message);
+//        <T extends BaseActivity> void startActivity(Class<T> tClass, @Nullable Bundle bundle);
+//        void readBundle(Bundle bundle);
     }
 
     abstract class Presenter<V extends View> implements BasePresenter<V> {

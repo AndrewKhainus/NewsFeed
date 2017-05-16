@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_bbc_news"
+        android:icon="@drawable/ic_24_hours"
+        android:title="@string/menu.bbc_news" />
+    <item
+        android:id="@+id/nav_bbc_sport"
+        android:icon="@drawable/ic_antenna"
+        android:title="@string/menu.bbc_sport" />
+    <item
+        android:id="@+id/nav_ars_technica"
+        android:icon="@drawable/ic_newspaper"
+        android:title="@string/menu.ars_technica" />
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_television"
+        android:title="@string/menu.favorite" />
+
+</menu>

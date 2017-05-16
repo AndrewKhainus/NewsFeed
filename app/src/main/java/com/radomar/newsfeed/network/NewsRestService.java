@@ -15,6 +15,6 @@ import static com.radomar.newsfeed.network.Config.GET_NEWS;
 public interface NewsRestService {
 
     @GET(GET_NEWS)
-    Observable<NewsResponse> createCustomer(@Query("source") String source, @Query("sortBy") String sortBy);
+    Observable<NewsResponse> getLatestNews(@Query("source") String source);
 
 }

@@ -42,22 +42,22 @@ dependencies {
     compile "com.android.support:cardview-v7:$supportLibVersion"
     compile "com.android.support:design:$supportLibVersion"
 
-    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
-    compile "io.reactivex.rxjava2:rxjava:2.1.0"
-
     // REST libraries
     compile "com.squareup.retrofit2:retrofit:$retrofitLibVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitLibVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitLibVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:3.7.0"
 
     //  Third party libraries
     compile "com.facebook.stetho:stetho-okhttp3:$stethoLibVersion"
     compile "com.jakewharton:butterknife:$buterknifeLibVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$buterknifeLibVersion"
     compile "com.google.dagger:dagger:$daggerLibVersion"
-    annotationProcessor  "com.google.dagger:dagger-compiler:$daggerLibVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerLibVersion"
 
 
-    testCompile "junit:junit:4.12"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }

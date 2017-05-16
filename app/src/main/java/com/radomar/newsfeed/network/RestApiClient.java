@@ -62,7 +62,7 @@ public class RestApiClient {
         return gson;
     }
 
-    public NewsRestService auth() {
+    public NewsRestService newsRestService() {
         return retrofit.create(NewsRestService.class);
     }
 

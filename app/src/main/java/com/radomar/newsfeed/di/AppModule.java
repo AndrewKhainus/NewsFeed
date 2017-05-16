@@ -29,7 +29,6 @@ public class AppModule {
         return application.getApplicationContext();
     }
 
-
     @Provides
     public RestApiClient provideRestClient() {
         return RestApiClient.getInstance();

@@ -8,6 +8,8 @@ import com.radomar.newsfeed.di.AppComponent;
 import com.radomar.newsfeed.di.AppModule;
 import com.radomar.newsfeed.di.DaggerAppComponent;
 
+import io.realm.Realm;
+
 /**
  * Created by Andrew on 15.05.2017.
  */
@@ -26,6 +28,7 @@ public class App extends Application {
                 .build();
 
         Stetho.initializeWithDefaults(this);
+        Realm.init(this);
     }
 
     public AppComponent getAppComponent() {
